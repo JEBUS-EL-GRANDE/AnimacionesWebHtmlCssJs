@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>menu desplegable</title>
+    <meta class="UTF-8">
+    <style>
+        *{
+            margin: 0
+            padding: 0;
+            box-sizing: border-box;
+            font-family:"Times New Roman";
+        }
+        body{
+            display:flex;
+            justify-content:center ;
+            align-items:center;
+            min-height:100vh;
+            background: linear-gradient(135deg, #e91e63,#673abb);
+        }
+        .navigation{
+            position:relative;
+            width:60px;
+            height:60px;
+            background:#fff;
+            border-radius:50% ;
+            transition: 0.5s;
+            border-radius:60px;
+            box-shadow:0 10px 15px rgba(0,0,0,0.05);
+        }
+        .navigation .active{
+            width:600px;
+        }
+        .navigation .toggleMenu{
+            position:absolute ;
+            width:60px;
+            height:60px;
+            background:#f00;
+            border-radius:50%;
+            transition:0.5s;
+            cursor:pointer;
+        }
+        .navigation.active .toggleMenu{
+            
+        }
+    </style>
+</head>
+<body>
+    <ul class="navigation">
+        <span class="toggleMenu"></span>
+    </ul>
+    <script>
+        let toggleMenu = document.querySelector('.toggleMenu');
+        let navigation = document.querySelector('.navigation');
+        toggleMenu.onclick = function(){
+            navigation.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
