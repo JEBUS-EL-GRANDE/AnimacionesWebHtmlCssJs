@@ -1,0 +1,77 @@
+<!docType html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>efecto liquido esferas</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            min-height:100vh;
+            overflow:hidden;
+        }
+        .container{
+            position:relative;
+            width:700px;
+            display:flex;
+            justify-content:space-between;
+            filter:url(#liquid);
+        }
+        .container .circle{
+            position:relative;
+            min-width: 300px;
+            height:300px;
+            border-radius: 50%;
+        }
+        .container .circle::before{
+            content:'';
+            position:absolute;
+            inset:-50px;
+            border-radius: 50%;
+            filter:blur(50px);
+        }
+        .container .circle.circle1,
+        .container .circle.circle1::before{
+            Background:linear-gradient(45deg, #ffeb3b, #da00ff);
+        }
+        .container .circle.circle2,
+        .container .circle.circle2::before{
+            Background:linear-gradient(45deg, #ff0c0c, #ffeb3b);
+        }
+        svg{
+            width: 0;
+            height:0 ;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+    </div>
+    <svg>
+        <filtrer id="liquid">
+            <feGaussianBlur in="SSourceGraphic" stdDeviation="10"/>
+            <feColorMatrix values="
+            1 0 0 0 0
+            0 1 0 0 0
+            0 0 1 0 0
+            0 0 0 20 -10
+            "/></feColorMatrix>
+        </filtrer>
+    </svg>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $(function(){
+                $(".container .circle").draggable();
+            });
+        </script>
+</body>
+</html>
